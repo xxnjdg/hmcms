@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: cms_service
+  data:
+    mongodb:
+      authentication-database: admin # 认证数据库
+      uri: mongodb://root:root@192.168.100.33:27017 # uri = 用户名：密码@主机名:端口号
+      database: xc_cms # 数据库
+  rabbitmq:
+    host: 192.168.100.33 # 主机名 集群vip也可以配这
+    publisher-confirm-type: correlated # confirm 机制
+server:
+  port: 10027
+
+# 自定义的队列名 交换机名 路由键
+project:
+  rabbitmq:
+    queue: mytestqueue
+    exchange: mytestexchange
+    routingkey: 5a751fab6abb5044e0d19ea1
+
+# xxl job 配置
+xxl:
+  job:
+    admin:
+      addresses: http://192.168.100.33:39999/xxl-job-admin # 调度中心部署跟地址 [选填]：如调度中心集群部署存在多个地址则用逗号分隔。执行器将会使用该地址进行"执行器心跳注册"和"任务结果回调"；为空则关闭自动注册；
+    executor:
+      appname: cms-service-executor # 执行器 AppName [选填]：执行器心跳注册分组依据；为空则关闭自动注册
+      ip: 192.168.100.14 # 执行器IP [选填]：默认为空表示自动获取IP，多网卡时可手动设置指定IP，该IP不会绑定Host仅作为通讯实用；地址信息用于 "执行器注册" 和 "调度中心请求并触发任务"；
+      port: 16768 # ### 执行器端口号 [选填]：小于等于0则自动获取；默认端口为9999，单机部署多个执行器时，注意要配置不同执行器端口；
+      logpath: C:\myfile\blackend\test_project\heimacms\cms_service\log # 执行器运行日志文件存储磁盘路径 [选填] ：需要对该路径拥有读写权限；为空则使用默认路径；
+      logretentiondays: 30 # 执行器日志文件保存天数 [选填] ： 过期日志自动清理, 限制值大于等于3时生效; 否则, 如-1, 关闭自动清理功能；
+    accessToken: #yudaoyuanma # 执行器通讯TOKEN [选填]：非空时启用；
+

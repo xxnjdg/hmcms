@@ -1,0 +1,6 @@
+2020-02-25 21:55:10 [com.xxl.job.core.thread.JobThread#run]-[124]-[Thread-21] <br>----------- xxl-job job execute start -----------<br>----------- Param:
+2020-02-25 21:55:10 [com.xxl.job.core.thread.JobThread#run]-[183]-[Thread-21] <br>----------- JobThread Exception:java.lang.RuntimeException: custom RuntimeException
+	at com.xxnjdg.heimacms.cmsservice.timer.RetrySendStaticHtmlMessageTask.execute(RetrySendStaticHtmlMessageTask.java:48)
+	at com.xxl.job.core.thread.JobThread.run(JobThread.java:152)
+<br>----------- xxl-job job execute end(error) -----------
+2020-02-25 21:55:10 [com.xxl.job.core.thread.TriggerCallbackThread#callbackLog]-[190]-[xxl-job, executor TriggerCallbackThread] <br>----------- xxl-job job callback finish.

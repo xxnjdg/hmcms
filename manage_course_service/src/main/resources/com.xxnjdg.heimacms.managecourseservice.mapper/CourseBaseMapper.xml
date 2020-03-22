@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxnjdg.heimacms.managecourseservice.mapper.CourseBaseMapper">
+
+    <resultMap id="BaseResultMap" type="com.xxnjdg.heimacms.servicemodel.managecourseservice.response.CourseBaseAndCoursePicture">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="users" property="users" />
+        <result column="mt" property="courseLargeCategory" />
+        <result column="grade" property="grade" />
+        <result column="studymodel" property="learningMode" />
+        <result column="teachmode" property="teachingMode" />
+        <result column="description" property="description" />
+        <result column="st" property="courseSmallCategory" />
+        <result column="status" property="status" />
+        <result column="company_id" property="companyId" />
+        <result column="user_id" property="userId" />
+        <result column="pic" property="picture" />
+    </resultMap>
+
+    <select id="queryCourseBaseAndCoursePictureList" resultMap="BaseResultMap">
+        SELECT * FROM course_base cb left join course_pic cp on cb.id = cp.courseid
+    </select>
+
+    <select id="queryCourseBaseById" resultMap="BaseResultMap">
+        select * from course_base where id = #{id}
+    </select>
+
+    <insert id="insertCourseBase">
+        INSERT INTO course_base(id,name,users,mt,grade,studymodel,description,st)
+        VALUES(#{id},#{name},#{users},#{courseLargeCategory},#{grade},#{learningMode},#{description},#{courseSmallCategory})
+    </insert>
+
+    <update id="updateCourseBase">
+        update course_base set name = #{name},users = #{users},mt = #{courseLargeCategory},grade = #{grade},studymodel = #{learningMode},
+        description = #{description},st = #{courseSmallCategory} where id = #{id}
+    </update>
+
+
+</mapper>

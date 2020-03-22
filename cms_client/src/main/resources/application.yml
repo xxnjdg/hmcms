@@ -1,0 +1,23 @@
+spring:
+  rabbitmq:
+    host: 192.168.100.33
+    listener:
+      simple:
+        prefetch: 1 # 限流，允许接受未确认的消息数，默认250
+  application:
+    name: cms_client
+  data:
+    mongodb:
+      authentication-database: admin # 认证数据库
+      uri: mongodb://root:root@192.168.100.33:27017 # uri = 用户名：密码@主机名:端口号
+      database: xc_cms # 数据库
+  redis:
+    host: 192.168.100.33
+    timeout: 10000
+server:
+  port: 10028
+project:
+  rabbitmq:
+    queue: mytestqueue
+    exchange: mytestexchange
+    routingkey: 5a751fab6abb5044e0d19ea1

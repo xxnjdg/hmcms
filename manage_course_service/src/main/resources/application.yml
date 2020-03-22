@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.100.33:3306/xc_course?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong
+    username: root
+    password: 123
+  application:
+    name: manage_course_service
+server:
+  port: 10029
+
+mybatis:
+  mapper-locations: classpath*:com.xxnjdg.heimacms.managecourseservice.mapper/*.xml
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
